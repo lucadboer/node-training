@@ -9,6 +9,7 @@ const server = http.createServer((req, res) => {
   if (method === 'GET' && url === '/users') {
     return res
     .setHeader('content-type', 'application/json')
+    .writeHead('200')
     .end(JSON.stringify(users))
   }
 
@@ -20,7 +21,7 @@ const server = http.createServer((req, res) => {
       age: 19
     })
 
-    return res.end('Criando novo usuário')
+    return res.writeHead(201).end()
   }
   
   return res.end('Hello World')
